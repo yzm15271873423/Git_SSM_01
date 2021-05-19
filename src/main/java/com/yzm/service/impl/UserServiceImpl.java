@@ -6,6 +6,8 @@ import com.yzm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Auther: yzm
  * @Date: 2021/5/19 - 05 - 19 - 16:59
@@ -19,5 +21,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(String uname, String password) {
         return userMapper.findUser(uname,password);
+    }
+
+    @Override
+    public List<User> findAllUser() {
+        return userMapper.findAllUser();
     }
 }

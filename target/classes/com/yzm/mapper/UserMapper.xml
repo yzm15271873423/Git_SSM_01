@@ -6,5 +6,11 @@
     <!--User findUser(String uname, String password);-->
     <select id="findUser" resultType="user">
     select * from user where uname = #{param1} and password = #{param2}
-  </select>
+    </select>
+
+    <!--List<User> findAllUser();-->
+    <select id="findAllUser" resultType="user">
+        select * from user
+    </select>
+
 </mapper>

@@ -5,6 +5,9 @@ import com.yzm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @Auther: yzm
@@ -26,8 +29,14 @@ public class UserController {
         }else {
             view="/fail.jsp";
         }
-
         return view;
     }
+
+    @ResponseBody
+    @RequestMapping("/findAllUser.do")
+    public List<User> testFindAllUser(){
+        return userService.findAllUser();
+    }
+
 
 }
