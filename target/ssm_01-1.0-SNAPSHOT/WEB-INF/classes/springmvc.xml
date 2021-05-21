@@ -36,10 +36,32 @@
     <mvc:annotation-driven/>
 
     <!--静态资源放行-->
-   <!-- <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+   <!-- <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>-->
     <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
-    <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>-->
+    <!--<mvc:resources mapping="/upload/**" location="/upload/"></mvc:resources>-->
+    <!--<mvc:resources mapping="/img/**" location="/img/"></mvc:resources>-->
    <!-- <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>-->
 
+    <!--文件上传解析组件
+    id必须为multipartResolver
+    springmvc默认使用该id找该组件
+    -->
+    <bean
+            id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+    <!--注册拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/login.do"/>
+            <bean id="myInterceptor2" class="com.yzm.interceptor.MyInterceptor2"></bean>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/login.do"/>
+            <bean id="myInterceptor" class="com.yzm.interceptor.MyInterceptor"></bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
 
 </beans>

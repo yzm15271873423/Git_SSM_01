@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-登录成功！
+登录成功！<%System.out.println("success.jsp");%>
+<hr>
+${requestScope.msg}
 </body>
 </html>

@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: yzm
@@ -21,15 +23,22 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/login.do")
-    public String testLogin(String uname,String password){
-        String view ="";
+    public ModelAndView testLogin(String uname, String password){
+        System.out.println("login.do ......");
+        ModelAndView mv = new ModelAndView();
+        Map<String, Object> model = mv.getModel();
+        model.put("msg","脏话，你好");
+
+        //设计一个异常
+        //int i =1/0;
+
         User user=userService.findUser(uname,password);
         if(null!=user){
-            view ="/success.jsp";
+            mv.setViewName("/success.jsp");
         }else {
-            view="/fail.jsp";
+            mv.setViewName("/fail.jsp");
         }
-        return view;
+        return mv;
     }
 
     @ResponseBody
